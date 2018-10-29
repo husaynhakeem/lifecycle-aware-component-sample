@@ -5,7 +5,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 
-class LocationListener(@get:VisibleForTesting(otherwise = VisibleForTesting.PRIVATE) val lifecycle: Lifecycle) : LifecycleObserver {
+class LocationListener(
+        @get:VisibleForTesting(otherwise = VisibleForTesting.PRIVATE) val lifecycle: Lifecycle,
+        private val callback: (String) -> Unit) : LifecycleObserver {
 
     private var enabled = false
 
@@ -20,6 +22,7 @@ class LocationListener(@get:VisibleForTesting(otherwise = VisibleForTesting.PRIV
     fun start() {
         if (enabled) {
             status = CONNECTED
+            callback.invoke("Somewhere in Los Angeles")
         }
     }
 

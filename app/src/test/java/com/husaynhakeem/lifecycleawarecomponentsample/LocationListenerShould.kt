@@ -11,7 +11,7 @@ class LocationListenerShould {
 
     @Before
     fun setUp() {
-        locationListener = LocationListener(lifecycleOwner.lifecycle)
+        locationListener = LocationListener(lifecycleOwner.lifecycle, {})
     }
 
     @Test
